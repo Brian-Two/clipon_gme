@@ -30,14 +30,6 @@ Originally developed for the Google TechExchange program to save time during bre
 4. Click "Load unpacked" and select the extension directory
 5. Pin the extension to your toolbar for easy access
 
-## 📝 License
 
-MIT
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
-
----
 
 *Made with ☕ to save time during collaborative online sessions*
