@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Google Meet Email Helper</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input {
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px;
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #1557b0;
+    }
+    #status {
+      color: green;
+      margin-top: 10px;
+      display: none;
+    }
+    #emailList {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 8px;
+      margin-top: 10px;
+      display: none;
+    }
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      margin-top: 10px;
+      resize: vertical;
+    }
+    .section {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Google Meet Email Helper</h2>
+    
+    <div>
+      <label for="userEmail">Your Email Address:</label>
+      <input type="email" id="userEmail" placeholder="your.email@example.com">
+      <button id="saveEmail">Save Email</button>
+      <p id="status">Email saved!</p>
+    </div>
+    
+    <div>
+      <button id="pasteEmail">Paste My Email in Chat</button>
+    </div>
+    
+    <div class="section">
+      <button id="collectEmails">Collect Emails from Chat</button>
+      <div id="emailList"></div>
+      <textarea id="emailTextArea" placeholder="Collected emails will appear here" readonly></textarea>
+      <button id="copyEmails">Copy All Emails</button>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
