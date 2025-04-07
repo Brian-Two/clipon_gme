@@ -1,0 +1,26 @@
+{
+    "name": "google-meet-email-helper",
+    "version": "1.0.0",
+    "description": "Chrome extension for managing emails in Google Meet",
+    "main": "popup.js",
+    "scripts": {
+      "test": "jest",
+      "test:watch": "jest --watch",
+      "test:coverage": "jest --coverage",
+      "lint": "eslint . --ext .js",
+      "lint:fix": "eslint . --ext .js --fix"
+    },
+    "devDependencies": {
+      "@testing-library/dom": "^9.3.4",
+      "@testing-library/jest-dom": "^6.2.0",
+      "eslint": "^8.56.0",
+      "eslint-plugin-jest": "^27.6.3",
+      "jest": "^29.7.0",
+      "jest-environment-jsdom": "^29.7.0"
+    },
+    "jest": {
+      "moduleNameMapper": {
+        "^@/(.*)$": "<rootDir>/$1"
+      }
+    }
+  }
