@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Google Meet Email Helper</title>
+  <style>
+    body {
+      width: 320px;
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+    
+    .container {
+      padding: 16px;
+    }
+    
+    h2 {
+      font-size: 18px;
+      margin: 0 0 16px 0;
+      color: #1a73e8;
+      font-weight: 500;
+    }
+    
+    .input-group {
+      margin-bottom: 12px;
+    }
+    
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: #5f6368;
+    }
+    
+    input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-bottom: 8px;
+      transition: border-color 0.2s;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: #1a73e8;
+    }
+    
+    button {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      font-weight: 500;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    
+    button:hover {
+      background-color: #1557b0;
+    }
+    
+    button.secondary {
+      background-color: #f1f3f4;
+      color: #1a73e8;
+    }
+    
+    button.secondary:hover {
+      background-color: #e8eaed;
+    }
+    
+    #status {
+      color: #0f9d58;
+      font-size: 13px;
+      text-align: center;
+      margin: 8px 0;
+      display: none;
+    }
+    
+    .divider {
+      height: 1px;
+      background-color: #dadce0;
+      margin: 16px 0;
+    }
+    
+    #emailList {
+      max-height: 150px;
+      overflow-y: auto;
+      margin-top: 8px;
+      display: none;
+      background-color: white;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      padding: 8px;
+    }
+    
+    #emailList ul {
+      margin: 0;
+      padding: 0 0 0 16px;
+      font-size: 13px;
+    }
+    
+    #emailList li {
+      margin-bottom: 4px;
+    }
+    
+    textarea {
+      width: 100%;
+      min-height: 80px;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: 13px;
+      resize: vertical;
+      margin-top: 8px;
+      box-sizing: border-box;
+    }
+    
+    #debugLog {
+      font-size: 11px;
+      line-height: 1.4;
+      padding: 8px;
+      background-color: #f1f3f4;
+      border-radius: 4px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Meets Email Helper</h2>
+    
+    <div class="input-group">
+      <label for="userEmail">Your Email Address</label>
+      <input type="email" id="userEmail" placeholder="your.email@example.com">
+      <button id="saveEmail">Save Email</button>
+      <p id="status">Email saved successfully!</p>
+    </div>
+    
+    <button id="pasteEmail">Paste My Email in Chat</button>
+    
+    <div class="divider"></div>
+    
+    <button id="collectEmails">Collect Emails from Chat</button>
+    <div id="emailList"></div>
+    <textarea id="emailTextArea" placeholder="Collected emails will appear here" readonly></textarea>
+    <button id="copyEmails" class="secondary">Copy All Emails</button>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
