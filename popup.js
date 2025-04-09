@@ -1,6 +1,13 @@
 // popup.js
 document.addEventListener('DOMContentLoaded', () => {
-  // Load or detect saved email
+  // (1) Reload saved emails when the popup opens
+  chrome.storage.local.get('collectedEmails', ({ collectedEmails }) => {
+    if (collectedEmails && collectedEmails.length) {
+      displayEmails(collectedEmails);
+    }
+  });
+
+  // Load or detect saved user email
   chrome.storage.sync.get(['userEmail'], ({ userEmail }) => {
     if (userEmail) {
       document.getElementById('userEmail').value = userEmail;
@@ -12,8 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = document.getElementById('userEmail').value.trim();
     if (!email) return;
     chrome.storage.sync.set({ userEmail: email }, () => {
-      document.getElementById('status').style.display = 'block';
-      setTimeout(() => document.getElementById('status').style.display = 'none', 2000);
+      const status = document.getElementById('status');
+      status.style.display = 'block';
+      setTimeout(() => status.style.display = 'none', 2000);
     });
   });
 
@@ -46,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
             alert(`Error: ${chrome.runtime.lastError.message}`);
           } else {
             displayEmails(response.emails);
+            // (2) Persist collected emails
+            chrome.storage.local.set({ collectedEmails: response.emails });
           }
         }
       );
@@ -59,12 +69,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.execCommand('copy');
     alert('Emails copied to clipboard!');
   });
+
+  // Clear stored & displayed emails
+  document.getElementById('clearEmails').addEventListener('click', () => {
+    chrome.storage.local.remove('collectedEmails', () => {
+      document.getElementById('emailList').style.display = 'none';
+      document.getElementById('emailTextArea').value = '';
+      alert('Collected emails cleared.');
+    });
+  });
 });
 
-// Render collected emails in the popup
+// Renders the list of emails in the popup
 function displayEmails(emails) {
   const listDiv = document.getElementById('emailList');
   const ta = document.getElementById('emailTextArea');
+
   if (!emails.length) {
     listDiv.innerHTML = '<p>No emails found in the chat.</p>';
     ta.value = '';
@@ -74,5 +94,6 @@ function displayEmails(emails) {
       '</ul>';
     ta.value = emails.join('\n');
   }
+
   listDiv.style.display = 'block';
 }
