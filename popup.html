@@ -109,6 +109,26 @@
       margin-top: 8px;
       box-sizing: border-box;
     }
+    #debugLog {
+      font-size: 11px;
+      line-height: 1.4;
+      padding: 8px;
+      background-color: #f1f3f4;
+      border-top: 1px solid #dadce0;
+      max-height: 120px;
+      overflow-y: auto;
+      display: none;
+    }
+    #debugToggle {
+      background-color: transparent;
+      color: #1a73e8;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      margin-bottom: 8px;
+      text-align: left;
+      padding: 0;
+    }
   </style>
 </head>
 <body>
@@ -131,6 +151,9 @@
     <textarea id="emailTextArea" placeholder="Collected emails will appear here" readonly></textarea>
     <button id="copyEmails" class="secondary">Copy All Emails</button>
     <button id="clearEmails" class="secondary">Clear Emails</button>
+    
+    <button id="debugToggle">Show Debug Console</button>
+    <div id="debugLog"></div>
   </div>
   
   <script src="popup.js"></script>
